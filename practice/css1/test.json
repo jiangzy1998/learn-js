@@ -1,0 +1,14 @@
+{
+    "body":{
+        "name":"all",
+        "data":{
+            "title":"string 通知的标题",
+            "read":"bool 是否已读",
+            "category":"string 消息来源，模块",
+            "time":"date 时间",
+            "message":"string 通知内容",
+            "urlTitle":"string",
+            "url":"string 操作链接"
+        }
+    }
+}
