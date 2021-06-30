@@ -40,3 +40,29 @@ subject.unregisterObervable(oberver1); // 移除观察者A
 
 subject.notifyObservers(); // 验证是否成功移除
 
+
+
+//ES 5 迭代器
+function makeIterator(array){
+    var nextIndex = 0;
+
+    return {
+        next: function(){
+            return nextIndex<array.length?
+                {value:array[nextIndex++],done:false}:
+                {done:true}
+        }
+    }
+}
+
+var it = makeIterator(['yo', 'ya']);
+console.log(it.next().value); // 'yo'
+console.log(it.next().value); // 'ya'
+console.log(it.next().done);  // true
+
+
+//ES 6 迭代器
+
+let arr = ['a', 'b', 'c'];
+let iter = arr[Symbol.iterator]();
+console.log(iter.next()) //{ value: 'a', done: false }
