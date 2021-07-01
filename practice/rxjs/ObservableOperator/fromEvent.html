@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdn.bootcss.com/rxjs/6.0.0-alpha.3/Rx.min.js"></script>
+
+</head>
+<body>
+    <button>123</button>
+
+    <script>
+        var click = Rx.Observable.fromEvent(document.querySelector("button"),'click')
+        .throttleTime(2000)
+        .map(event => event.clientX)
+        .scan((count, clientX) => count + clientX, 0)
+
+
+        click.subscribe({
+            next: function(value) {
+                console.log(value);
+            },
+            complete: function() {
+                console.log('complete!');
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        })
+    </script>
+</body>
+</html>
